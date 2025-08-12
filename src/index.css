@@ -1,0 +1,40 @@
+:root {
+    --bg-main: #F6F8F3;
+    --bg-card: #FFFFFF;
+    --text-main: #222E24;
+    --text-header: #222E24;
+    --accent: #68A357;
+    --border: #B8C1B1;
+    --error: #E74C3C;
+    --success: #4CAF50;
+}
+.button {
+    background: var(--accent);
+    color: #fff;
+}
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+body {
+    font-size: 18px;
+    line-height: 1.6;
+    font-family: 'Open Sans', Arial, Verdana, sans-serif;
+    background: var(--bg-main);
+    color: var(--text-main);
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 0.5em;
+}
