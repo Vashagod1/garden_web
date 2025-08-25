@@ -1,0 +1,32 @@
+.greeting {
+    position: relative;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    overflow: hidden;
+}
+.greeting::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/public/images/GreetingSectionBG.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(1.9px);
+    z-index: 1;
+}
+.greeting__section {
+    position: relative;
+    z-index: 2;
+}
+
+.greeting__text,
+.greeting__text h1,
+.greeting__text p {
+    text-align: center;
+    font-size: 40px;
+
+}

@@ -1,4 +1,4 @@
-import '../styles/components/Header.css'
+import '../styles/Header.css'
 import {NavLink} from "react-router-dom";
 import {FaUser} from "react-icons/fa";
 
@@ -11,7 +11,7 @@ const links = [
 function Header() {
     return (
         <div className='header'>
-            <div className="header__container">
+            <div className="container header__container">
                 <div className='header__logo'>
                     <NavLink to='/' className='header__logo__link'>
                         GardenWeb
@@ -32,9 +32,9 @@ function Header() {
                     </ul>
                 </nav>
                 <div className="header__profile">
-                    <button className="header__profile-btn">
-                        <FaUser />
-                    </button>
+                    <NavLink to='/profile' className='header__profile__link'>
+                        <span className="header__profile-btn"><FaUser /></span>
+                    </NavLink>
                 </div>
             </div>
         </div>

@@ -1,9 +1,12 @@
+import GreetingSection from "../components/GreetingSection.tsx";
+import UsersSection from "../components/UsersSection.tsx";
 
 
 function Home() {
     return (
         <>
-            Это главная страница
+            <GreetingSection />
+            <UsersSection />
         </>
     )
 }
