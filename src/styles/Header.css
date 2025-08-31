@@ -6,14 +6,13 @@
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
     background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(2px);
 }
 
 .header__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1300px;
     width: 100%;
     margin: 0 auto;
 }

@@ -1,5 +1,6 @@
 import GreetingSection from "../components/GreetingSection.tsx";
 import UsersSection from "../components/UsersSection.tsx";
+import TipsSection from "../components/TipsSection.tsx";
 
 
 function Home() {
@@ -7,6 +8,7 @@ function Home() {
         <>
             <GreetingSection />
             <UsersSection />
+            <TipsSection />
         </>
     )
 }
