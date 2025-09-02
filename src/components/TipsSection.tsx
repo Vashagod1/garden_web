@@ -1,6 +1,7 @@
 
 import '../styles/TipsSection.css';
 import { tipsData } from "../data/TipsSection.ts";
+import {NavLink} from "react-router-dom";
 
 function TipsSection() {
     const firstFourTips = tipsData.slice(0, 4);
@@ -17,7 +18,7 @@ function TipsSection() {
                             <img className="tips__grid-img" src={tip.image} alt={tip.title} />
                             <h2 className="tips__grid-title">{tip.title}</h2>
                             <p className="tips__grid-desc">{tip.short}</p>
-                            <button className="tips__grid-btn">Подробнее</button>
+                            <NavLink to="/guide" className="tips__grid-link">Подробнее</NavLink>
                         </div>
                     ))}
                 </div>

@@ -40,10 +40,16 @@
     color: #34592d;
     font-weight: bold;
     margin: 0;
+    margin-bottom: 8px;
 }
-.tips__grid-btn{
+
+.tips__grid-desc {
+    margin-bottom: 10px;
+}
+.tips__grid-link{
     background: var(--accent, #68a357);
     color: #fff;
+    text-decoration: none;
     border: none;
     cursor: pointer;
     font-size: 1.5rem;
