@@ -1,0 +1,25 @@
+.calendar__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+.calendar__weekday {
+    font-weight: bold;
+    text-align: center;
+    background: #f0f0f0;
+    padding: 4px 0;
+}
+.calendar__cell {
+    height: 32px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 4px 0;
+}
+.calendar__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}

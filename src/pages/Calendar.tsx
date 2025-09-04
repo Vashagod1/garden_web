@@ -1,9 +1,9 @@
+import CalendarSection from "../components/CalendarSection.tsx";
 
 function Calendar() {
     return (
         <>
-            Это страница с календарём огородных дел
-            Календарь работ
+            <CalendarSection />
         </>
     )
 }

@@ -1,10 +1,4 @@
-export interface Tip {
-    id: number;
-    image: string;
-    title: string;
-    short: string;
-    full: string;
-}
+import type {Tip} from "@prisma/client";
 
 export const tipsData: Tip[] = [
     {
