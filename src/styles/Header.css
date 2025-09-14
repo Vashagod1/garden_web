@@ -1,23 +1,42 @@
-/* Layout */
 .header {
-    background: #fafaf9;
+    background: rgba(255, 255, 255, 0.95);
+    color: #fff;
+    font-size: 1rem;
     min-height: 72px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
-    background: rgba(255,255,255,0.95);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .header__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1300px;
-    width: 100%;
-    margin: 0 auto;
 }
 
-/* Логотип */
+.header__left,
+.header__right {
+    flex: 1;
+}
+
+.header__nav {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.header__right {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .header__logo__link {
     font-weight: bold;
     font-size: 2rem;
@@ -30,12 +49,6 @@
     color: #3d7c3d;
 }
 
-/* Навигация */
-.header__nav {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
 .header__list {
     display: flex;
     align-items: center;
@@ -45,7 +58,6 @@
     padding: 0;
 }
 
-/* Ссылки меню */
 .header__nav-link {
     color: var(--text-main, #444);
     text-decoration: none;
@@ -71,7 +83,6 @@
     width: 100%;
 }
 
-/* Кнопка профиля */
 .header__profile-btn {
     background: transparent;
     border: none;

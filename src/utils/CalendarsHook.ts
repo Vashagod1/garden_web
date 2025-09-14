@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import {useMemo, useState} from "react";
 
 const monthNames = [
     "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
@@ -20,24 +20,26 @@ export function useCalendarHook(initialDate = new Date()) {
         month: initialDate.getMonth(),
     });
 
-    const setPrevMonth = () => {
-        setCalendar(({ year, month }) => {
-            if (month === 0) return { year: year - 1, month: 11 };
-            return { year, month: month - 1 };
+    function prevMonth() {
+        setCalendar(({year, month}) => {
+            if (month === 0) {
+                return {year: year - 1, month: 11};
+            }
+            return {year, month: month - 1};
         });
-    };
+    }
 
-    const setNextMonth = () => {
-        setCalendar(({ year, month }) => {
-            if (month === 11) return { year: year + 1, month: 0 };
-            return { year, month: month + 1 };
+    function nextMonth() {
+        setCalendar(({year, month}) => {
+            if (month === 11) {
+                return {year: year + 1, month: 0};
+            }
+            return {year, month: month + 1};
         });
-    };
-
-    // Мемоизированная сетка календаря
+    }
     const calendarGrid = useMemo(() => {
         const daysInMonth = getDaysInMonth(calendar.year, calendar.month);
-        const firstDayOfWeek = getFirstDayOfWeek(calendar.year, calendar.month);
+        const firstDayOfWeek = getFirstDayOfWeek(calendar.year, calendar.month)
 
         const cells: (number | null)[] = [];
         for (let i = 0; i < firstDayOfWeek; i++) cells.push(null);
@@ -52,8 +54,8 @@ export function useCalendarHook(initialDate = new Date()) {
         month: calendar.month,
         monthName: monthNames[calendar.month],
         weekDays,
-        setPrevMonth,
-        setNextMonth,
+        prevMonth,
+        nextMonth,
         calendarGrid
     };
 }

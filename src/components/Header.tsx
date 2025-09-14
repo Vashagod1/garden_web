@@ -7,11 +7,12 @@ function Header() {
     return (
         <div className='header'>
             <div className="container header__container">
-                <div className='header__logo'>
+                <div className="header__left">
                     <NavLink to='/' className='header__logo__link'>
                         GardenWeb
                     </NavLink>
                 </div>
+
                 <nav className='header__nav'>
                     <ul className="header__list">
                         {links.map(link =>(
@@ -26,7 +27,8 @@ function Header() {
                         ))}
                     </ul>
                 </nav>
-                <div className="header__profile">
+
+                <div className="header__right">
                     <NavLink to='/profile' className='header__profile__link'>
                         <span className="header__profile-btn"><FaUser /></span>
                     </NavLink>
