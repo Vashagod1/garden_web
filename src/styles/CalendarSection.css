@@ -45,3 +45,47 @@
     align-items: center;
     justify-content: center;
 }
+
+.calendar__tasks-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.calendar__tasks-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.calendar__tasks-section input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.calendar__tasks-section button {
+    padding: 8px 16px;
+    background: var(--accent, #68a357);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.calendar__tasks-section button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.calendar__tasks-section ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.calendar__tasks-section li {
+    margin-bottom: 5px;
+}
