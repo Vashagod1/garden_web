@@ -44,6 +44,8 @@ const CalendarSection: React.FC = () => {
                         {cell || ""}
                     </div>
                 ))}
+            </div>
+            <div className="calendar__tasks-section">
                 {selectedDay && (
                     <form
                         onSubmit={e => {
@@ -62,7 +64,7 @@ const CalendarSection: React.FC = () => {
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTaskText(e.target.value)}
                             placeholder="Введите здачу"
                         />
-                        <button type="submit">Добавить</button>
+                        <button type="submit" disabled={!taskText.trim()}>Добавить</button>
                     </form>
                 )}
                 {selectedDay && tasks[selectedDay] && (
