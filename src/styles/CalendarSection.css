@@ -17,6 +17,16 @@
     background: #fff;
     border: 1px solid #eee;
     padding: 4px 0;
+
+    /* --- УЛУЧШЕНИЯ --- */
+    position: relative; /* Это нужно, чтобы точка-индикатор правильно расположилась внутри ячейки */
+    cursor: pointer;    /* Теперь курсор будет меняться на всех ячейках, показывая, что они кликабельны */
+    transition: background-color 0.2s ease-in-out; /* Добавим плавности для всех изменений фона */
+}
+
+/* Эффект при наведении на любую ячейку (кроме выбранной) */
+.calendar__cells:not(.calendar__cells-selected):hover {
+    background-color: #f5f5f5; /* Слегка подсвечиваем ячейку, на которую навели мышь */
 }
 
 .calendar__header {
@@ -44,4 +54,89 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #333; /* Сделаем иконки чуть темнее */
+    transition: color 0.2s ease;
+}
+.calendar__btn:hover {
+    color: var(--accent); /* При наведении красим в акцентный цвет */
+}
+
+
+.calendar__cells-selected {
+    background: var(--accent);
+    color: white; /* Сделаем текст на выбранной ячейке белым для контраста */
+}
+
+.calendar__cells-selected:hover {
+    background: #3d7c3d;
+}
+
+
+/* --- НОВЫЙ СТИЛЬ ДЛЯ ДНЕЙ С ЗАДАЧАМИ --- */
+
+/* Это псевдо-элемент. Мы создаем "виртуальный" элемент ПОСЛЕ (:after) контента ячейки.
+   Это самый элегантный способ добавить индикатор. */
+.calendar__cells-has-tasks::after {
+    content: ''; /* Обязательное свойство для псевдо-элементов */
+    position: absolute; /* Позиционируем его относительно ячейки (потому мы и добавили position: relative; в .calendar__cells) */
+
+    /* Располагаем точку внизу по центру */
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%); /* Точно центрируем точку */
+
+    /* Рисуем саму точку */
+    width: 5px;
+    height: 5px;
+    background-color: var(--accent); /* Используем твой акцентный цвет */
+    border-radius: 50%; /* Делаем ее круглой */
+}
+
+/* Для выбранного дня с задачей можно сделать точку белой, чтобы ее было видно */
+.calendar__cells-selected.calendar__cells-has-tasks::after {
+    background-color: white;
+}
+
+.calendar__tasks-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.calendar__tasks-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.calendar__tasks-section input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.calendar__tasks-section button {
+    padding: 8px 16px;
+    background: var(--accent, #68a357);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.calendar__tasks-section button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.calendar__tasks-section ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.calendar__tasks-section li {
+    margin-bottom: 5px;
 }
