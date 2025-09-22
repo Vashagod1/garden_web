@@ -14,7 +14,7 @@ function getFirstDayOfWeek(year: number, month: number) {
     return d === 0 ? 6 : d - 1;
 }
 
-export function useCalendarHook(initialDate = new Date()) {
+export function CalendarHook(initialDate = new Date()) {
     const [calendar, setCalendar] = useState({
         year: initialDate.getFullYear(),
         month: initialDate.getMonth(),

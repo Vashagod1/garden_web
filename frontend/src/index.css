@@ -38,35 +38,35 @@ h3 {
 }
 @font-face {
     font-family: 'Nunito', sans-serif;
-    src: url('/public/fonts/Nunito-Bold.ttf') format('truetype');
+    src: url('/frontend/public/fonts/Nunito-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins', sans-serif;
-    src: url('/public/fonts/Nunito-ExtraBold.ttf') format('truetype');
+    src: url('/frontend/public/fonts/Nunito-ExtraBold.ttf') format('truetype');
     font-weight: 800;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins', sans-serif;
-    src: url('/public/fonts/Nunito-Medium.ttf') format('truetype');
+    src: url('/frontend/public/fonts/Nunito-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins', sans-serif;
-    src: url('/public/fonts/Nunito-Regular.ttf') format('truetype');
+    src: url('/frontend/public/fonts/Nunito-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins', sans-serif;
-    src: url('/public/fonts/Nunito-SemiBold.ttf') format('truetype');
+    src: url('/frontend/public/fonts/Nunito-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
 }

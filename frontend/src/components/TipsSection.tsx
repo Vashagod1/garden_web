@@ -1,4 +1,3 @@
-
 import '../styles/TipsSection.css';
 import { tipsData } from "../data/Tips.ts";
 import {NavLink} from "react-router-dom";
