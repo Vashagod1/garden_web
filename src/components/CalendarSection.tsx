@@ -4,7 +4,14 @@ import {useCalendarHook} from "../utils/CalendarsHook.ts";
 import React, {useEffect, useState} from "react";
 import {cn} from "../utils/cn.ts";
 
-type Tasks = { [dataKey: string]: string[] };
+interface Task{
+    text: string;
+    completed: boolean;
+}
+
+interface Tasks {
+    [dataKey: string]: Task[];
+}
 
 const CalendarSection: React.FC = () => {
     const {
@@ -39,7 +46,7 @@ const CalendarSection: React.FC = () => {
         }
     }, [tasks]);
 
-    const selectedDateKey = selectedDay ? `${year}-${month}-${selectedDay}` : null; {/* Этот ключ нужен для создания уникальной даты */}
+    const selectedDateKey = selectedDay ? `${year}-${month}-${selectedDay}` : null; {/* Этот ключ нужен для создания уникальной даты. Не до конца понимаю почему уникальна и почему мы её почти везде используем */}
 
     const handleDeleteTask = (taskIndex: number) => {
         if (!selectedDateKey) return;
@@ -77,7 +84,7 @@ const CalendarSection: React.FC = () => {
             const currentTasks = prev[selectedDateKey] || [];
             const newTasksForDay = currentTasks.map((task, index) => {
                 if (index === editingTaskIndex) {
-                    return editingTaskText;
+                    return {...task, text: editingTaskText};
                 }
                 return task;
             });
@@ -93,6 +100,22 @@ const CalendarSection: React.FC = () => {
 
     const tasksForSelectedDay = selectedDay ? tasks[selectedDateKey] : undefined;
     const hasTasksForSelectedDay = tasksForSelectedDay && tasksForSelectedDay.length > 0;
+
+
+    const handleToggleCompleted = (taskIndex: number) => {
+        if (!selectedDateKey) return;
+        setTasks(prev => {
+            const currentTasks = prev[selectedDateKey] || [];
+            const newTasksForDay = currentTasks.map((task, idx) =>
+            idx === taskIndex ? {...task, completed: !task.completed}: task
+            );
+            return {
+                ...prev,
+                [selectedDateKey]: newTasksForDay,
+            };
+        });
+    };
+
 
     return (
         <div className="calendar">
@@ -114,7 +137,9 @@ const CalendarSection: React.FC = () => {
                     return (
                         <div
                             key={i}
-                            className={cn('calendar__cells',
+                            className={cn(
+                                'calendar__cells',
+                                !cell && 'calendar__cells-empty',
                                 cell !== null && cell === selectedDay ? "calendar__cells-selected" : "",
                                 hasTasks ? "calendar__cells-has-tasks" : ""
                             )}
@@ -135,7 +160,7 @@ const CalendarSection: React.FC = () => {
                                     }
                                     setTasks(prev => ({
                                         ...prev,
-                                        [selectedDateKey]: [...(prev[selectedDateKey] || []), taskText]
+                                        [selectedDateKey]: [...(prev[selectedDateKey] || []), { text: taskText, completed: false }]
                                     }));
                                     setTaskText("");
                                 }}
@@ -153,7 +178,12 @@ const CalendarSection: React.FC = () => {
                             {hasTasksForSelectedDay && (
                                 <ul>
                                     {tasksForSelectedDay.map((task, idx) => (
-                                        <li key={`${task}-${idx}`}>
+                                        <li key={idx}>
+                                            <input
+                                                type="checkbox"
+                                                checked={task.completed}
+                                                onChange={() => handleToggleCompleted(idx)}
+                                            />
                                             {editingTaskIndex === idx ? (
                                                 <>
                                                     <input type="text"
@@ -165,18 +195,25 @@ const CalendarSection: React.FC = () => {
                                                 </>
                                             ) : (
                                                 <>
-                                                   <span onClick={() => handleStartEditing(idx, task)}>
-                                                       {task}
-                                                   </span>
-                                                    <button className="calendar__task-delete" onClick={() => handleDeleteTask(idx)} style={{marginLeft: '10px'}}><FaX/></button>
+                                                    <span
+                                                        onClick={() => handleStartEditing(idx, task.text)}
+                                                        style={{textDecoration: task.completed ? 'line-through' : 'none'}}
+                                                    >
+                                                        {task.text}
+                                                    </span>
+                                                    <button className="calendar__task-delete"
+                                                            onClick={() => handleDeleteTask(idx)}
+                                                            style={{marginLeft: '10px'}}>
+                                                        <FaX/>
+                                                    </button>
                                                 </>
-                                            )}
+                                            )};
                                         </li>
-                                    ))}
+                                    ))};
                                 </ul>
-                            )}
+                            )};
                         </>
-                    )}
+                    )};
                 </div>
             </div>
         </div>

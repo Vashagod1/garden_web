@@ -1,32 +1,12 @@
+/* ======================================= */
+/*          ОСНОВНАЯ СТРУКТУРА             */
+/* ======================================= */
+
 .calendar__grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 2px;
-}
-
-.calendar__weekday{
-    font-weight: bold;
-    text-align: center;
-    background: #f0f0f0;
-    padding: 4px 0;
-}
-
-.calendar__cells {
-    height: 32px;
-    text-align: center;
-    background: #fff;
-    border: 1px solid #eee;
-    padding: 4px 0;
-
-    /* --- УЛУЧШЕНИЯ --- */
-    position: relative; /* Это нужно, чтобы точка-индикатор правильно расположилась внутри ячейки */
-    cursor: pointer;    /* Теперь курсор будет меняться на всех ячейках, показывая, что они кликабельны */
-    transition: background-color 0.2s ease-in-out; /* Добавим плавности для всех изменений фона */
-}
-
-/* Эффект при наведении на любую ячейку (кроме выбранной) */
-.calendar__cells:not(.calendar__cells-selected):hover {
-    background-color: #f5f5f5; /* Слегка подсвечиваем ячейку, на которую навели мышь */
+    outline: none;
 }
 
 .calendar__header {
@@ -42,6 +22,7 @@
     text-align: center;
     font-size: 26px;
     font-weight: bold;
+    user-select: none;
 }
 
 .calendar__btn {
@@ -54,48 +35,80 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #333; /* Сделаем иконки чуть темнее */
+    color: #333;
     transition: color 0.2s ease;
 }
+
 .calendar__btn:hover {
-    color: var(--accent); /* При наведении красим в акцентный цвет */
+    color: var(--accent);
 }
 
+/* ======================================= */
+/*              ЯЧЕЙКИ КАЛЕНДАРЯ           */
+/* ======================================= */
 
+/* 1. Стили для дней недели (Пн, Вт, Ср...) */
+.calendar__weekday {
+    font-weight: bold;
+    text-align: center;
+    background: #f0f0f0;
+    padding: 4px 0;
+    user-select: none;
+}
+
+/* 2. Базовый стиль для ВСЕХ ячеек с датами */
+.calendar__cells {
+    height: 32px;
+    padding: 4px 0;
+    text-align: center;
+    border: 1px solid #eee;
+    background: #fff;
+    position: relative; /* Нужно для точки-индикатора */
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    user-select: none;
+}
+
+/* 3. Стиль для ПУСТЫХ ячеек (делаем их неактивными) */
+.calendar__cells-empty {
+    cursor: default;
+    background-color: #fcfcfc;
+    border-color: #fcfcfc;
+}
+
+/* 4. Эффект наведения ТОЛЬКО для АКТИВНЫХ ячеек */
+.calendar__cells:not(.calendar__cells-selected):not(.calendar__cells-empty):hover {
+    background-color: #f5f5f5;
+}
+
+/* 5. Стиль для ВЫБРАННОЙ ячейки */
 .calendar__cells-selected {
     background: var(--accent);
-    color: white; /* Сделаем текст на выбранной ячейке белым для контраста */
+    color: white;
 }
 
-.calendar__cells-selected:hover {
-    background: #3d7c3d;
-}
-
-
-/* --- НОВЫЙ СТИЛЬ ДЛЯ ДНЕЙ С ЗАДАЧАМИ --- */
-
-/* Это псевдо-элемент. Мы создаем "виртуальный" элемент ПОСЛЕ (:after) контента ячейки.
-   Это самый элегантный способ добавить индикатор. */
+/* 6. Индикатор-точка для дней, где есть задачи */
 .calendar__cells-has-tasks::after {
-    content: ''; /* Обязательное свойство для псевдо-элементов */
-    position: absolute; /* Позиционируем его относительно ячейки (потому мы и добавили position: relative; в .calendar__cells) */
-
-    /* Располагаем точку внизу по центру */
+    content: '';
+    position: absolute;
     bottom: 4px;
     left: 50%;
-    transform: translateX(-50%); /* Точно центрируем точку */
-
-    /* Рисуем саму точку */
+    transform: translateX(-50%);
     width: 5px;
     height: 5px;
-    background-color: var(--accent); /* Используем твой акцентный цвет */
-    border-radius: 50%; /* Делаем ее круглой */
+    background-color: var(--accent);
+    border-radius: 50%;
 }
 
-/* Для выбранного дня с задачей можно сделать точку белой, чтобы ее было видно */
+/* Делаем точку белой на выбранном дне, чтобы её было видно */
 .calendar__cells-selected.calendar__cells-has-tasks::after {
     background-color: white;
 }
+
+
+/* ======================================= */
+/*           СЕКЦИЯ С ЗАДАЧАМИ             */
+/* ======================================= */
 
 .calendar__tasks-section {
     margin-top: 20px;
@@ -139,4 +152,7 @@
 
 .calendar__tasks-section li {
     margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
