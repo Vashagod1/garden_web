@@ -1,9 +1,13 @@
 import '../styles/TipsSection.css';
-import { tipsData } from "../data/Tips.ts";
-import {NavLink} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {fetchTips, type Tip} from "../api/tipsApi.ts";
 
 function TipsSection() {
-    const firstFourTips = tipsData.slice(0, 4);
+    const [tips, setTips] = useState<Tip[]>([]);
+
+    useEffect(() => {
+        fetchTips().then(setTips);
+    }, [])
 
     return (
         <div className="tips">
@@ -12,13 +16,13 @@ function TipsSection() {
                     Наши советы по началу:
                 </div>
                 <div className="tips__grid">
-                    {firstFourTips.map((tip) => (
-                        <div className="tips__grid-item" key={tip.id}>
-                            <img className="tips__grid-img" src={tip.image} alt={tip.title} />
-                            <h2 className="tips__grid-title">{tip.title}</h2>
-                            <p className="tips__grid-desc">{tip.short}</p>
-                            <NavLink to="/guide" className="tips__grid-link">Подробнее</NavLink>
-                        </div>
+                    {tips.map((tip) => (
+                        <li key={tip.id}>
+                            <div className="tips__grid-item">
+                                <h2 className="tips__grid-title">{tip.title}</h2>
+                                <p className="tips__grid-desc">{tip.text}</p>
+                            </div>
+                        </li>
                     ))}
                 </div>
             </div>
