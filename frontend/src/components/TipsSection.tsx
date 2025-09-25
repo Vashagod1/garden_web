@@ -20,7 +20,7 @@ function TipsSection() {
                         <li key={tip.id}>
                             <div className="tips__grid-item">
                                 <h2 className="tips__grid-title">{tip.title}</h2>
-                                <p className="tips__grid-desc">{tip.text}</p>
+                                <p className="tips__grid-desc">{tip.short}</p>
                             </div>
                         </li>
                     ))}

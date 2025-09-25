@@ -1,4 +1,4 @@
-import type {Tip} from "@prisma/client";
+import type {Tip} from "../api/tipsApi.ts";
 
 export const tipsData: Tip[] = [
     {

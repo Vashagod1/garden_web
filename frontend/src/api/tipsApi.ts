@@ -1,7 +1,13 @@
 export type Tip = {
     id: number;
+    image: string;
     title: string;
-    text: string;
+    short: string;
+    full: string;
+    category: string;
+    level: string;
+    place: string | null;
+    createdAt: Date | undefined;
 };
 
 export async function fetchTips() {
