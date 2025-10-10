@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import {FaUser} from "react-icons/fa";
 import {links} from "../data/Links.ts";
 
-function Header() {
+export function Header() {
     return (
         <div className='header'>
             <div className="container header__container">
@@ -37,4 +37,3 @@ function Header() {
         </div>
     )
 }
-export default Header;

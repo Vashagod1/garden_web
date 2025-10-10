@@ -1,158 +1,75 @@
-/* ======================================= */
-/*          ОСНОВНАЯ СТРУКТУРА             */
-/* ======================================= */
+.calendar {
+    margin: 2rem auto;
+}
 
-.calendar__grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 2px;
-    outline: none;
+.calendar__main{
+    padding: 0 2rem 2rem 2rem;
 }
 
 .calendar__header {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    padding: 15px;
+    padding: 1rem;
 }
 
-.calendar__title {
-    width: 240px;
-    text-align: center;
-    font-size: 26px;
-    font-weight: bold;
+.calendar__date {
+    padding: 0 1rem 0 1rem;
     user-select: none;
 }
 
-.calendar__btn {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    height: 40px;
-    width: 40px;
+.calendar__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    user-select: none;
+    gap: 1rem;
+}
+
+.calendar__day{
     display: flex;
-    align-items: center;
+    background: var(--bg-card);
+    cursor: pointer;
     justify-content: center;
-    color: #333;
-    transition: color 0.2s ease;
-}
-
-.calendar__btn:hover {
-    color: var(--accent);
-}
-
-/* ======================================= */
-/*              ЯЧЕЙКИ КАЛЕНДАРЯ           */
-/* ======================================= */
-
-/* 1. Стили для дней недели (Пн, Вт, Ср...) */
-.calendar__weekday {
-    font-weight: bold;
-    text-align: center;
-    background: #f0f0f0;
-    padding: 4px 0;
-    user-select: none;
-}
-
-/* 2. Базовый стиль для ВСЕХ ячеек с датами */
-.calendar__cells {
-    height: 32px;
-    padding: 4px 0;
-    text-align: center;
-    border: 1px solid #eee;
-    background: #fff;
-    position: relative; /* Нужно для точки-индикатора */
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-    user-select: none;
-}
-
-/* 3. Стиль для ПУСТЫХ ячеек (делаем их неактивными) */
-.calendar__cells-empty {
-    cursor: default;
-    background-color: #fcfcfc;
-    border-color: #fcfcfc;
-}
-
-/* 4. Эффект наведения ТОЛЬКО для АКТИВНЫХ ячеек */
-.calendar__cells:not(.calendar__cells-selected):not(.calendar__cells-empty):hover {
-    background-color: #f5f5f5;
-}
-
-/* 5. Стиль для ВЫБРАННОЙ ячейки */
-.calendar__cells-selected {
-    background: var(--accent);
-    color: white;
-}
-
-/* 6. Индикатор-точка для дней, где есть задачи */
-.calendar__cells-has-tasks::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 5px;
-    height: 5px;
-    background-color: var(--accent);
-    border-radius: 50%;
-}
-
-/* Делаем точку белой на выбранном дне, чтобы её было видно */
-.calendar__cells-selected.calendar__cells-has-tasks::after {
-    background-color: white;
-}
-
-
-/* ======================================= */
-/*           СЕКЦИЯ С ЗАДАЧАМИ             */
-/* ======================================= */
-
-.calendar__tasks-section {
-    margin-top: 20px;
-    padding: 15px;
-    background: #f9f9f9;
-    border-radius: 8px;
-}
-
-.calendar__tasks-section form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.calendar__tasks-section input {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-.calendar__tasks-section button {
-    padding: 8px 16px;
-    background: var(--accent, #68a357);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.calendar__tasks-section button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-}
-
-.calendar__tasks-section ul {
-    margin-top: 15px;
-    padding-left: 20px;
-}
-
-.calendar__tasks-section li {
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: space-between;
+    border: 2px solid transparent;
     align-items: center;
+    flex-direction: column;
+    padding: 8px 0;
+
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.calendar__day:hover{
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.calendar__day.selected{
+    background-color: #e7f1ff;
+    border-color: #0d6efd;
+    color: #0d6efd;
+}
+
+.calendar__day.today{
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white
+}
+
+.calendar__day.today.selected{
+    border-color: white;
+}
+
+.calendar__day.has-tasks .calendar__day-number {
+    font-weight: bold;
+}
+
+.calendar__task-indicator {
+    font-size: 0.7rem;
+    color: var(--accent);
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding: 0 4px;
 }

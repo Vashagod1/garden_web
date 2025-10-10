@@ -1,11 +1,9 @@
 
 
-function Guide() {
+export function Guide() {
     return (
         <>
 
         </>
     )
 }
-
-export default Guide;

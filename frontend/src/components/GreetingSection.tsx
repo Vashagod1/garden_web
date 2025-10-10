@@ -1,7 +1,7 @@
 import '../styles/GreetingSection.css'
 import {NavLink} from "react-router-dom";
 
-function GreetingSection() {
+export function GreetingSection() {
     return (
         <div className="greeting">
             <div className="greeting__background">
@@ -21,5 +21,3 @@ function GreetingSection() {
         </div>
     );
 }
-
-export default GreetingSection;

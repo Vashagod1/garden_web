@@ -2,7 +2,7 @@ import '../styles/TipsSection.css';
 import {useEffect, useState} from "react";
 import {fetchTips, type Tip} from "../api/tipsApi.ts";
 
-function TipsSection() {
+export function TipsSection() {
     const [tips, setTips] = useState<Tip[]>([]);
 
     useEffect(() => {
@@ -29,5 +29,3 @@ function TipsSection() {
         </div>
     );
 }
-
-export default TipsSection;

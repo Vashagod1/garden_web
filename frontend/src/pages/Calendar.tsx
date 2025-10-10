@@ -1,11 +1,9 @@
-import CalendarSection from "../components/CalendarSection.tsx";
+import {CalendarSection} from "../components";
 
-function Calendar() {
+export function Calendar() {
     return (
         <>
             <CalendarSection />
         </>
     )
 }
-
-export default Calendar;

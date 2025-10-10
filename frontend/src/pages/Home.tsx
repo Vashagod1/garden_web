@@ -1,9 +1,9 @@
-import GreetingSection from "../components/GreetingSection.tsx";
-import UsersSection from "../components/UsersSection.tsx";
-import TipsSection from "../components/TipsSection.tsx";
+import {GreetingSection} from "../components";
+import {UsersSection} from "../components";
+import {TipsSection} from "../components";
 
 
-function Home() {
+export function Home() {
     return (
         <>
             <GreetingSection />
@@ -12,5 +12,3 @@ function Home() {
         </>
     )
 }
-
-export default Home;

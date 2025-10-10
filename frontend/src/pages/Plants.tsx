@@ -1,5 +1,5 @@
 
-function Plants() {
+export function Plants() {
     return (
         <>
             Это страница с культурами
@@ -7,5 +7,3 @@ function Plants() {
         </>
     )
 }
-
-export default Plants;

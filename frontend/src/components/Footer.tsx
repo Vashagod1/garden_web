@@ -3,7 +3,7 @@ import {FaTelegram} from "react-icons/fa";
 import {links} from "../data/Links.ts";
 import {NavLink} from "react-router-dom";
 
-function Footer() {
+export function Footer() {
     return (
         <footer className="footer">
             <div className="footer__content">
@@ -35,5 +35,3 @@ function Footer() {
         </footer>
     )
 }
-
-export default Footer;

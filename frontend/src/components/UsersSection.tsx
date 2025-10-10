@@ -1,7 +1,7 @@
 import '../styles/UsersSection.css';
 import {FaLeaf, FaSeedling, FaUserGraduate} from "react-icons/fa";
 
-function UsersSection() {
+export function UsersSection() {
     return(
         <div className="users">
             <div className="users__container">
@@ -41,5 +41,3 @@ function UsersSection() {
         </div>
     )
 }
-
-export default UsersSection;
