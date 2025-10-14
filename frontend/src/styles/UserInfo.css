@@ -1,0 +1,23 @@
+.user {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #e5e5e5;
+}
+
+.user__img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user__right {
+    flex-grow: 1;
+}
+
+.user__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}

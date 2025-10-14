@@ -5,3 +5,4 @@ export { GreetingSection } from "./GreetingSection";
 export { TipsSection } from "./TipsSection";
 export { UsersSection } from "./UsersSection";
 export { UserInfo } from "./UserInfo";
+export { UserSpecs } from "./UserSpecs.tsx";

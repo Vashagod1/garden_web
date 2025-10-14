@@ -1,0 +1,16 @@
+.user-specs {
+
+}
+
+.user-specs__items {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    color: var(--text-main, #444);
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #e5e5e5;
+}
+
+.user-specs__stats {
+    margin-top: 10px;
+}
